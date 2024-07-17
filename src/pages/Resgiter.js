@@ -17,7 +17,9 @@ function Resgiter(){
          username :"",
          password :"",
          amount: 0,
-         email:""
+         email:"",
+         following: 0,
+         follow: 0
       },
       onSubmit : async (values) =>{
          if (values.email) {
@@ -55,7 +57,7 @@ function Resgiter(){
                    // Sau 5 giây, chuyển hướng trang
                    setTimeout(() => {
                       navigate("/login");
-                    }, 3000);
+                    }, 2000);
                 
             }else{
                toast.error(`Tạo tài khoản thất bại , tên tài khoản hoặc email đã tồn tại `, {
@@ -76,7 +78,7 @@ function Resgiter(){
       // Sau 5 giây, ẩn phần tử #loading
       const timer = setTimeout(() => {
         setShowLoading(false);
-      }, 2800);
+      }, 1800);
     }
     )
     return(

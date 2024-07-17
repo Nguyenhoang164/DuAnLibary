@@ -1023,5 +1023,547 @@ Pricing Page
     justify-content: center;
     align-items: center;
     /* Sử dụng chiều cao của màn hình */
+}
+.main-home-search{
+  width: 100%;
+  height: 100%;
+}
+.main-home-header{
+  width: 100%;
+  height: 400px;
+  background-color: #4ac4f3;
+}
+.main-home-header-up{
+  display: inline-flex;
+  background-color: #ff9273;
+  justify-content: space-around;
+  height: 200px;
+}
+.main-home-header-logo{
+  float: right;
+  width: 30%;
+  background-color: #f44336;
+  height: 200px;
+}
+.main-twitter{
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-top: 20px;
+}
+.body-twitter{
+  width: 100%;
+  height: 400px;
+  display: inline-flex;
+  justify-content: space-between;
+  padding-top: 100px;
+}
+.logo-twitter{
+  width: 30%;
+  height: 400px;
+  float: left;
+  align-items: center;
+}
+.form-login-twitter{
+  width: 60%;
+  height: 400px;
+  float: right;
+}
+.logo-twitter-size{
+  width: 140%;
+  height: 140%;
+}
+.footer-twitter {
+  padding-top: 230px;
+  width: 1500px;
+  display: flex; /* Sử dụng Flexbox */
+  justify-content: center; /* Canh giữa các phần tử theo chiều ngang */
+  flex-wrap: wrap; /* Tự động xuống dòng khi chạm cạnh màn hình */
+  padding-right: 20px;
+}
+
+.footer-service-twitter {
+  list-style: none;
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+}
+
+.footer-service-twitter li {
+  margin-right: 20px; /* Thêm khoảng cách giữa các phần tử */
+  white-space: nowrap; /* Ngăn chặn văn bản xuống dòng */
+}
+.button-twitter{
+  padding-top: 30px;
+}
+.button-sign-in-twitter {
+  border-radius: 15px;
+  background-color: rgba(81, 81, 239, 0.951);
+  width: 350px;
+  height: 40px;
+  color: white;
+  transition: background-color 0.3s ease; /* Thêm hiệu ứng chuyển đổi */
+}
+
+.button-sign-in-twitter:hover {
+  background-color: rgb(127, 127, 243);/* Thay đổi màu nền khi hover */
+  cursor: pointer; /* Thay đổi con trỏ chuột khi hover */
+}
+.span{
+  font-size: 10px;
+}
+.sologan-twitter-text{
+  font-family: Arial, Helvetica, sans-serif ;
+}
+.button-twitter-login{
+  padding-top: 10px;
+}
+.twitter-main-page{
+  display: inline-flex;
+  justify-content: space-between;
+}
+.nav-twitter-page{
+  width: 400px;
+  height: 100%;
+  position: sticky;
+  top: 0; /* Vị trí cố định từ đỉnh trang */
+  z-index: 1;
+}
+.nav-twitter-side-page{
+  list-style: none;
+  padding-left: 150px;
+}
+.nav-twitter-side-page li{
+  padding-top: 15px;
+  font-size: 21px;
+}
+.logo-twitter-page{
+  width: 20%;
+  height: 20%;
+}
+.text-nav-twitter-page{
+  padding-right: 5px;
+  padding-top: 3px;
+}
+.icon-nav-twitter-page{
+  padding-bottom: 2px;
+  margin-right: 15px;
+}
+.body-twitter-page {
+  width: 600px;
+  height: 100%;
+  border-left: 1px solid rgb(110, 104, 104);
+  border-right: 1px solid rgb(119, 119, 119);
+  margin-left: 35px;
+}
+.switch-twitter-page{
+  display: inline-flex;
+}
+.switch-twitter-page button {
+  width: 300px;
+  height: 49px;
+  background-color: transparent;
+  color: #ccc;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  position: relative;
+  transition: color 0.3s ease, background-color 0.3s ease, border-bottom 0.3s ease;
+  border-bottom: 2px solid #5e5d5d; /* Cạnh dưới trong trạng thái bình thường là màu trắng */
+}
+
+.switch-twitter-page button.active {
+  color: #fff;
+  background-color: #0077b6;
+  border-bottom: 2px solid #737272; /* Cạnh dưới khi button được chọn vẫn là màu trắng */
+}
+
+.switch-twitter-page button:hover {
+  color: #333;
+  background-color: #6a6767;
+  border-bottom: 2px solid #333; /* Cạnh dưới khi hover là màu xám tối */
+}
+
+.switch-twitter-page button.active:hover::after {
+  width: 150px;
+  border-bottom-color: #fff; /* Đường kẻ xanh dưới button đang chọn khi hover vẫn là màu trắng */
+}
+.text-title-blog-twitter-page{
+  width: 520px;
+  height: 50px;
+  background-color: transparent;
+  color: white;
+  border: none;
+  outline: none;
+  box-shadow: none;
+}
+.avatar-user-twitter{
+  width: 40px;
+  margin-left: 20px;
+  margin-top: 10px;
   
+}
+.avatar-user-twitter-profile{
+  width: 80px;
+  margin-top: 10px;
+  
+}
+.form-blog-left{
+  float: left;
+  width: 30%;
+  padding-right: 10px;
+}
+.form-blog-right{
+  float: right;
+ 
+}
+.create-blog-twitter-page{
+  display: inline-flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #333; /* Thêm đường kẻ dưới */
+  
+
+}
+label {
+  cursor: pointer;
+}
+label AiOutlinePicture {
+  font-size: 24px;
+  color: #0077b6; /* Màu xanh dương */
+}
+#image-preview {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+#image-preview img {
+  max-width: 100px;
+  height: auto;
+}
+
+#image-preview::after {
+  content: "...";
+  font-size: 20px;
+  color: #999;
+  display: none;
+}
+.file-style{
+  width: 100%;
+  display: inline-flex;
+  justify-content: space-between;
+}
+.file-style-left{
+  float: left;
+}
+.file-style-right{
+  float: right;
+}
+.button-send {
+  background-color: #0077b6;
+  color: white;
+  border: none;
+  padding: 14px 28px; /* Tăng kích thước padding */
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 10px; /* Tăng kích thước font */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Thay đổi font family */
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.button-send:hover {
+  background-color: #005a87;
+}
+.suggest-twitter-page{
+  height: 100%;
+  position: sticky;
+  top: 0; /* Vị trí cố định từ đỉnh trang */
+  z-index: 1;
+  margin-left: 60px;
+  width: 300px;
+}
+.search-twitter-page{
+  padding-top: 10px;
+}
+
+.search-input-twitter-page {
+  background-color: #66686a;
+  border-radius: 20px;
+  padding: 10px 40px 10px 40px;
+  border: none;
+  font-size: 10px;
+  width: 300px; /* Vị trí icon cách 10px từ phải và canh giữa */
+}
+.search-icon {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  margin-top: 5px;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.search-twitter-page{
+  position: relative;
+}
+.Premium-twitter-page { /* Màu nền xám */
+  border: 1px solid #ccc; /* Thêm đường viền xám */
+  border-radius: 10px; /* Bo góc đẹp */
+  padding: 20px; /* Thêm khoảng cách 20px xung quanh nội dung */
+  margin-top: 60px; /* Cách trên 15px */
+}
+
+.Premium-twitter-page h3 {
+  margin-top: 0; /* Loại bỏ margin mặc định của h3 */
+}
+
+.Premium-twitter-page button {
+  background-color: #1DA1F2; /* Màu xanh cho button */
+  color: #fff; /* Màu chữ trắng */
+  border: none;
+  padding-top: 10px;
+  border-radius: 20px; /* Bo góc đẹp */
+  padding: 5px 10px;
+  cursor: pointer;
+}
+.user-dropdown-twitter-page {
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  border: 1px solid #4d4949;
+  border-radius: 15px;
+  padding: 8px;
+  cursor: pointer;
+  position: relative;
+  margin-left: 90px;
+  margin-top: 50px;
+  margin-right: 20px;
+  z-index: 101; /* Đảm bảo div trigger nằm trên menu */
+}
+
+.avatar-user-twitter {
+  width: 35px; /* Giảm kích thước ảnh */
+  height: 35px;
+  border-radius: 50%;
+  margin-right: 10px; /* Giảm khoảng cách giữa ảnh và tên/email */
+}
+
+.name-user-and-email-twitter {
+  flex-grow: 1;
+  font-size: 13px; /* Giảm kích thước chữ */
+  color: #fff6f6;
+}
+
+.logo-user-button {
+  font-size: 18px; /* Giảm kích thước nút */
+  color: #999;
+}
+
+.dropdown-menu {
+  display: block;
+  position: absolute;
+  pointer-events: auto;
+  top: 50%;
+  left: 0;
+  transform: translateY(-135%); /* Di chuyển menu lên 50% kích thước của chính nó */
+  background-color: transparent;
+  border: 1px solid #6c6b6b;
+  border-radius: 5px;
+  padding: 8px;
+  z-index: 100;
+  min-width: 120px;
+}
+.dropdown-menu button {
+  display: block;
+  width: 100%;
+  padding: 6px 10px;
+  background-color: transparent;
+  border: none;
+  text-align: left;
+  font-size: 13px;
+  color: #b7b5b5;
+  cursor: pointer;
+}
+
+.user-dropdown-twitter-page:hover {
+  background-color: #d2c7c7;
+}
+
+.dropdown-menu button:hover {
+  background-color: #f0f0f0;
+}
+.part-blog-twitter-page {
+  border: 1px solid #858282;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+.picture-blog-part{
+  width: 100%;
+  height: auto ;
+  padding: 5px 5px 5px 5px;
+}
+/* Tùy chỉnh thanh cuộn cho WebKit (Chrome, Safari, Opera) */
+::-webkit-scrollbar {
+  width: 10px; /* Độ rộng của thanh cuộn */
+}
+
+::-webkit-scrollbar-track {
+  background-color: #f1f1f1; /* Màu nền của vùng thanh cuộn */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #888; /* Màu của thanh cuộn */
+  border-radius: 5px; /* Bo tròn góc của thanh cuộn */
+  transition: background-color 0.3s ease; /* Thêm hiệu ứng chuyển đổi */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #555; /* Thay đổi màu khi rê chuột vào thanh cuộn */
+}
+
+/* Tùy chỉnh thanh cuộn cho Firefox */
+* {
+  scrollbar-width: thin; /* Độ rộng của thanh cuộn */
+  scrollbar-color: #888 #f1f1f1; /* Màu của thanh cuộn và nền */
+}
+.icon-part-blog-twitter{
+  list-style: none;
+  display: inline-flex;
+}
+.icon-part-blog-twitter li{
+  margin-left: 25px;
+}
+.marquee-container {
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.marquee {
+  display: inline-block;
+  padding-left: 100%;
+  animation: marquee 10s linear infinite;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
+}
+.btn-no-bg {
+  background-color: transparent;
+  border: none;
+  color: #475569; /* Đặt màu chữ là gray-700 */
+  padding: 0.5rem;
+}
+
+.btn-no-bg:hover {
+  color: #334155; /* Đặt màu chữ khi hover là gray-800 */
+}
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal.visible {
+  display: flex;
+}
+
+.modal.hidden {
+  display: none;
+}
+
+.modal-content {
+  background-color: #282727;
+  margin: 90px auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 40%;
+  max-height: 80%;
+  overflow-y: auto;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 10px;
+}
+
+.close-button {
+  color: #aaa;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.comment-list {
+  max-height: 300px;
+  overflow-y: auto;
+  margin-bottom: 10px;
+}
+
+.comment-input {
+  display: flex;
+  align-items: center;
+  border-top: 1px solid #ccc;
+  padding-top: 10px;
+}
+
+#comment-text {
+  flex-grow: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.submit-button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+  margin-left: 10px;
+  width: 90px;
+}
+.modal-footer{
+  display: inline-flex;
+  justify-content: space-around;
+}
+.input-comment{
+  width: 400px;
+  background-color: transparent;
+  color: white;
+}
+.comment-page{
+  margin-top: 10px;
+  display: inline-flex;
+  justify-content: space-evenly;
+}
+.modal-body{
+  height: auto;
+}
+.user-profile-inf{
+  display: inline-flex;
+  text-align: center;
+  align-items: center;
+}
+.dis-profile{
+  display: inline-flex;
+  width: 100%;
+  font-size: 16px;
 }

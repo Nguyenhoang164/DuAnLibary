@@ -1,18 +1,20 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 function HomeAdmin(){
     const [showLoading, setShowLoading] = useState(true);
-    const [categories , setCategories] = useState([]);
     const [users , setUsers] = useState([]);
     const [userVip , setUserVip] = useState([]);
     const [userVipFive ,setUserVipFive] = useState([]);
+    const [blogs,setBlog] = useState([]);
     const [view, setView] = useState(0);
     const [hasUpdatedLocalStorage, setHasUpdatedLocalStorage] = useState(false);
     var userName = sessionStorage.getItem("userName");
     var userId = sessionStorage.getItem("userId");
     var userEmail = sessionStorage.getItem("userEmail");
+
     console.log(userName)
     console.log(userId)
     console.log(userEmail)
@@ -21,6 +23,46 @@ function HomeAdmin(){
         sessionStorage.clear();
         navigate("/login");
    }
+   useEffect(() =>{
+      if(userId == null){
+         toast.error(`Warning !, this site is private , your permission is not allow to connect, try to login`, {
+            position: "top-right",
+            autoClose: 4000, // Đặt thời gian autoClose là 3 giây
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          })
+          navigate("/login");
+      }else{
+         axios.get("http://localhost:8080/api/users/admin/" + userId).then(res =>{
+            var bolean = res.data;
+            if(bolean == "false"){
+               toast.error(`Warning !, this site is private , your permission is not allow to connect, try to login`, {
+                  position: "top-right",
+                  autoClose: 4000, // Đặt thời gian autoClose là 3 giây
+                  hideProgressBar: true,
+                  closeOnClick: true,
+                  pauseOnHover: true,
+                  draggable: true,
+                  progress: undefined,
+                })
+                navigate("/login");
+            }else{
+               toast.success(`your permissom is suscess to login this site, happy doing`, {
+                  position: "top-right",
+                  autoClose: 5000, // Đặt thời gian autoClose là 3 giây
+                  hideProgressBar: true,
+                  closeOnClick: true,
+                  pauseOnHover: true,
+                  draggable: true,
+                  progress: undefined,
+                })
+            }
+         })
+      }
+   },[])
    useEffect(() => {
       // Đọc giá trị view từ local storage khi component được render
       const storedView = localStorage.getItem('view');
@@ -40,14 +82,14 @@ function HomeAdmin(){
       }
     }, [view, hasUpdatedLocalStorage]);
   useEffect(() => {
+   axios.get("http://localhost:8080/api/blogs").then(res =>{
+      setBlog(res.data);
+   })
    axios.get("http://localhost:8080/api/users").then(res =>{
       setUsers(res.data);
    });
    axios.get("http://localhost:8080/api/users/userVip").then(res =>{
       setUserVip(res.data);
-   });
-   axios.get("http://localhost:8080/api/category/getTenCategory").then(res =>{
-      setCategories(res.data);
    });
    axios.get("http://localhost:8080/api/users/topFiveUser").then(res =>{
       setUserVipFive(res.data);
@@ -55,7 +97,7 @@ function HomeAdmin(){
     // Sau 5 giây, ẩn phần tử #loading
     const timer = setTimeout(() => {
       setShowLoading(false);
-    }, 4000);
+    }, 3000);
       
     // Cleanup timer khi component được unmount
     return () => clearTimeout(timer);
@@ -90,23 +132,17 @@ function HomeAdmin(){
          <div id="sidebar-scrollbar">
             <nav class="iq-sidebar-menu">
                <ul id="iq-sidebar-toggle" class="iq-menu">
-                  <li><a href="/" class="text-primary"><i class="ri-arrow-right-line"></i><span>Visit site</span></a></li>
-                  <li class="active active-menu"><a href="index.html" class="iq-waves-effect"><i class="las la-home iq-arrow-left"></i><span>Dashboard</span></a></li>
-                  <li><a href="/users" class="iq-waves-effect"><i class="las la-user-friends"></i><span>User</span></a></li>
-                  <li><a href="/bill" class="iq-waves-effect"><i class="ri-price-tag-line"></i><span>Bill</span></a></li>
+                  <li><a href="/" class="text-primary"><i class="ri-arrow-right-line"></i><span>Trang người dùng</span></a></li>
+                  <li class="active active-menu"><a href="index.html" class="iq-waves-effect"><i class="las la-home iq-arrow-left"></i><span>Trang chủ</span></a></li>
+                  <li><a href="/users" class="iq-waves-effect"><i class="las la-user-friends"></i><span>Người dùng</span></a></li>
+                  <li><a href="/bill" class="iq-waves-effect"><i class="ri-price-tag-line"></i><span>Hóa đơn</span></a></li>
                   <li>
-                     <a href="#ui-elements" class="iq-waves-effect collapsed" data-toggle="collapse" aria-expanded="false"><i class="lab la-elementor iq-arrow-left"></i><span>Category</span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a>
+                     <a href="#ui-elements" class="iq-waves-effect collapsed" data-toggle="collapse" aria-expanded="false"><i class="lab la-elementor iq-arrow-left"></i><span>Bài viết</span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a>
                      <ul id="ui-elements" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
                         <li>
-                        <a href="#ui-elements"><i class="lab la-elementor iq-arrow-left"></i><span>Show Category</span></a>
-                        </li>
-                        <li>
-                        <a href="#ui-elements"><i class="lab la-elementor iq-arrow-left"></i><span>Create Category</span></a>
+                        <a href="/blog"><i class="lab la-elementor iq-arrow-left"></i><span>Bài viết</span></a>
                         </li>
                      </ul>
-                  </li>
-                  <li>
-                     <a href="#pages" class="iq-waves-effect collapsed" data-toggle="collapse" aria-expanded="false"><i class="las la-file-alt iq-arrow-left"></i><span>Picture</span> </a>
                   </li>
                </ul>
             </nav>
@@ -324,7 +360,7 @@ function HomeAdmin(){
                               <div class="d-flex align-items-center justify-content-between">
                                  <div class="iq-cart-text text-capitalize">
                                     <p class="mb-0 font-size-14">
-                                       danh mục
+                                       Premium
                                     </p>
                                  </div>
                                  <div class="icon iq-icon-box-top rounded-circle bg-warning">
@@ -332,7 +368,7 @@ function HomeAdmin(){
                                  </div>
                               </div>
                               <div class="d-flex align-items-center justify-content-between mt-3">
-                                 <h4 class=" mb-0">{categories.length}</h4>
+                                 
                               </div>
                            </div>
                         </div>
@@ -343,11 +379,11 @@ function HomeAdmin(){
                               <div class="d-flex align-items-center justify-content-between">
                                  <div class="iq-cart-text text-capitalize">
                                     <p class="mb-0 font-size-14">
-                                       ảnh
+                                       Blog
                                     </p>
                                  </div>
                                  <div class="icon iq-icon-box-top rounded-circle bg-info">
-                                    <i class="las la-download"></i>
+                                    <i class="las la-download">{blogs.length}</i>
                                  </div>
                               </div>
                               <div class="d-flex align-items-center justify-content-between mt-3">
@@ -566,15 +602,6 @@ function HomeAdmin(){
                                  <div class="iq-progress-bar progress-bar-vertical iq-bg-primary">
                                     <span class="bg-primary" data-percent="100" style={{ width: '100%', height: '2s ease 0s  40%'}} ></span>
                                  </div>
-                                 {categories.map(item =>{
-                                    <div class="media align-items-center">
-                                    <div class="iq-icon-box-view rounded mr-3 iq-bg-primary"><i class="las la-film font-size-32"></i></div>
-                                    <div class="media-body text-white">
-                                       <h6 class="mb-0 font-size-14 line-height">{item.name}</h6>
-                                    </div>
-                                 </div>
-                                 })}
-                                 
                               </div>
                              
                            </div>

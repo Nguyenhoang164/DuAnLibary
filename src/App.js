@@ -7,6 +7,10 @@ import Resgiter from './pages/Resgiter';
 import UserManager from './pages/UserManager';
 import Home from './pages/Home';
 import RecoveryPassword from './pages/RecoveryPassword';
+import Blog from './pages/Blog/Blog';
+import TwitterPage from './pages/TwitterPage';
+
+
 
 function App() {
   return (
@@ -18,6 +22,8 @@ function App() {
       <Route path='/homeAdmin' element={<HomeAdmin/>} />
       <Route path='/users' element={<UserManager/>}/>
       <Route path='/recovery' element={<RecoveryPassword/>} />
+      <Route path='/blog' element={<Blog/>} />
+      <Route path='/twitterPage' element={<TwitterPage/>} />
     </Routes>
     </>
   );

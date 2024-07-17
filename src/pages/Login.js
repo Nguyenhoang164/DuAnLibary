@@ -47,7 +47,14 @@ function Login(){
                // Sau 5 giây, chuyển hướng trang
                setTimeout(() => {
                   navigate("/HomeAdmin");
-                }, 3000);
+                }, 2800);
+            }else{
+               sessionStorage.setItem("userName", res.data.username);
+               sessionStorage.setItem("userId", res.data.id);
+               sessionStorage.setItem("userEmail", res.data.email);
+               setTimeout(() => {
+                  navigate("/twitterPage");
+                }, 2800);
             }
           }
          } catch (error) {
