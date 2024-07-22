@@ -162,7 +162,7 @@ function TwitterPage(){
         });
         setTimeout(() => {
           showCommentModal(values.blog.id);
-        }, 2000);
+        }, 100);
       })
     }
   })
@@ -294,6 +294,7 @@ function TwitterPage(){
     <div className="modal-body">
     {comment.map((item) => (
   <div className="comment-page" key={item.id}>
+    <div className="cmts">
     <div>
       <img className="avatar-user-twitter" src="../assets/images/user/man-300x300.png" />
     </div>
@@ -303,6 +304,7 @@ function TwitterPage(){
       </div>
     
     <span style={{paddingLeft:"10px",marginTop:"25px",fontSize:"10px",color:"#615d5d"}}>{formatDistanceToNow(new Date(item.timeCreateComments), { addSuffix: true })}</span>
+    </div>
   </div>
 
 ))}

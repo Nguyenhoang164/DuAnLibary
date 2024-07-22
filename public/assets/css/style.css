@@ -1489,6 +1489,7 @@ label AiOutlinePicture {
   padding: 20px;
   border: 1px solid #888;
   width: 40%;
+  height: 800px;
   max-height: 80%;
   overflow-y: auto;
 }
@@ -1566,4 +1567,8 @@ label AiOutlinePicture {
   display: inline-flex;
   width: 100%;
   font-size: 16px;
+}
+.cmts{
+  width: 900px;
+  display: inline-flex;
 }
