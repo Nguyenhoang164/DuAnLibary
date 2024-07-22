@@ -7,17 +7,15 @@ import java.time.LocalDateTime;
 
 @Entity
 @Data
-@Table(name = "comments")
-public class Comments {
+public class FollowUser {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private String comment;
-    private LocalDateTime timeCreateComments;
+    private long id;
     @ManyToOne
-    @JoinColumn(name = "id_user")
+    @JoinColumn(name = "user_Follow")
     private User user;
     @ManyToOne
-    @JoinColumn(name = "id_blog")
-    private Blog blog;
+    @JoinColumn(name = "user_Following")
+    private User userFollowing;
+    private LocalDateTime createdAt;
 }

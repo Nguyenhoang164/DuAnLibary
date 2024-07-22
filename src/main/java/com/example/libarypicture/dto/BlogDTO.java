@@ -1,22 +1,33 @@
 package com.example.libarypicture.dto;
 
 import com.example.libarypicture.model.Blog;
-import com.example.libarypicture.model.User;
-import jakarta.persistence.*;
 import org.springframework.web.multipart.MultipartFile;
 
-public class PictureDTO {
-    private MultipartFile multipartFile;
+import java.util.List;
 
-    public PictureDTO(MultipartFile multipartFile) {
+public class BlogDTO {
+    private MultipartFile multipartFile;
+    private Blog blog;
+
+    public BlogDTO(MultipartFile multipartFile, Blog blog) {
         this.multipartFile = multipartFile;
+        this.blog = blog;
+    }
+
+    public Blog getBlog() {
+        return blog;
+    }
+
+    public BlogDTO setBlog(Blog blog) {
+        this.blog = blog;
+        return this;
     }
 
     public MultipartFile getMultipartFile() {
         return multipartFile;
     }
 
-    public PictureDTO setMultipartFile(MultipartFile multipartFile) {
+    public BlogDTO setMultipartFile(MultipartFile multipartFile) {
         this.multipartFile = multipartFile;
         return this;
     }

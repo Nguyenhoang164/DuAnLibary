@@ -3,6 +3,7 @@ package com.example.libarypicture.model;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
@@ -13,11 +14,9 @@ public class Bill {
     private Long id;
     private String title;
     @ManyToOne
-    @JoinColumn(name = "id_picture")
-    private Picture picture;
-    @ManyToOne
     @JoinColumn(name = "id_user")
     private User user;
     private String status;
+    private LocalDateTime localDateTime;
 
 }

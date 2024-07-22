@@ -3,6 +3,7 @@ package com.example.libarypicture.controller;
 import com.example.libarypicture.dto.UserLoginDTO;
 import com.example.libarypicture.model.User;
 import com.example.libarypicture.repository.IUserRepository;
+import com.example.libarypicture.service.impl.FollowService;
 import com.example.libarypicture.service.impl.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -22,6 +23,8 @@ public class UserController {
     private UserService userService;
     @Autowired
     private IUserRepository userRepository;
+    @Autowired
+    private FollowService followService;
 
     @GetMapping("/topFiveUser")
     public ResponseEntity<List<User>> getAllUsersTopFive() {
@@ -94,5 +97,31 @@ public class UserController {
             return new ResponseEntity<>(true,HttpStatus.OK);
         }
         return new ResponseEntity<>(false,HttpStatus.OK);
+    }
+    @GetMapping("/admin/{id}")
+    public ResponseEntity<Boolean> getAdminById(@PathVariable long id){
+        Optional<User> userOptional = userService.getUser(id);
+        if (userOptional.isEmpty()){
+            return new ResponseEntity<>(false,HttpStatus.OK);
+        }else if(userOptional.get().getRole().getName().equals("admin")){
+            return new ResponseEntity<>(true,HttpStatus.OK);
+        }else{
+            return new ResponseEntity<>(false,HttpStatus.OK);
+        }
+
+    }
+    @GetMapping("/user/{id}")
+    public ResponseEntity<Optional<User>> findUserById(@PathVariable long id){
+        Optional<User> userOptional = userService.getUser(id);
+        return new ResponseEntity<>(userOptional,HttpStatus.OK);
+    }
+    @GetMapping("/followUser/{userId}/{userFollow}")
+    public ResponseEntity<Boolean> followUser(@PathVariable long userId, @PathVariable long userFollow){
+        boolean statusFollow = followService.followUser(userId, userFollow);
+        if (statusFollow){
+            return new ResponseEntity<>(true,HttpStatus.OK);
+        }else {
+            return new ResponseEntity<>(false,HttpStatus.OK);
+        }
     }
 }

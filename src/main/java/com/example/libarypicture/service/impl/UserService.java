@@ -8,6 +8,7 @@ import com.example.libarypicture.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -25,9 +26,11 @@ public class UserService implements IUserService {
                 return false;
             }
         }
-        user.setStatus("chưa kích hoạt");
+        user.setStatus("Chưa kích hoạt");
         Optional<Role> role = rollRepository.findById(2L);
         user.setRole(role.get());
+        LocalDateTime localDateTime = LocalDateTime.now();
+        user.setCreatedAt(localDateTime);
         userRepository.save(user);
         return true;
     }
@@ -39,14 +42,14 @@ public class UserService implements IUserService {
 
     @Override
     public void updateStatusUser(User user) {
-        if (user.getStatus().equals("chưa kích hoạt")){
-            user.setStatus("đã kích hoạt");
+        if (user.getStatus().equals("Chưa kích hoạt")){
+            user.setStatus("Đã kích hoạt");
             userRepository.saveAndFlush(user);
-        }else if(user.getStatus().equals("đã kích hoạt")){
-            user.setStatus("đã bị chặn");
+        }else if(user.getStatus().equals("Đã kích hoạt")){
+            user.setStatus("Đã bị chặn");
             userRepository.saveAndFlush(user);
-        }else if(user.getStatus().equals("đã bị chặn")) {
-            user.setStatus("đã kích hoạt");
+        }else if(user.getStatus().equals("Đã bị chặn")) {
+            user.setStatus("Đã kích hoạt");
             userRepository.saveAndFlush(user);
         }
     }

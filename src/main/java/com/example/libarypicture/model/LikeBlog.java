@@ -3,21 +3,23 @@ package com.example.libarypicture.model;
 import jakarta.persistence.*;
 import lombok.Data;
 
-import java.time.LocalDateTime;
-
 @Entity
 @Data
-@Table(name = "comments")
-public class Comments {
+public class LikeBlog {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private String comment;
-    private LocalDateTime timeCreateComments;
+    private long id;
     @ManyToOne
-    @JoinColumn(name = "id_user")
     private User user;
     @ManyToOne
-    @JoinColumn(name = "id_blog")
     private Blog blog;
+
+    public LikeBlog(Blog blog, User user) {
+        this.blog = blog;
+        this.user = user;
+    }
+
+    public LikeBlog() {
+
+    }
 }

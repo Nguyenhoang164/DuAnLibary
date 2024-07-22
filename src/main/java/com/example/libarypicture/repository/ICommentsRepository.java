@@ -8,4 +8,5 @@ import org.springframework.stereotype.Repository;
 import javax.xml.stream.events.Comment;
 @Repository
 public interface ICommentsRepository extends JpaRepository<Comments, Long> {
+    Iterable<Comments> findAllByBlogId(long blogId);
 }
